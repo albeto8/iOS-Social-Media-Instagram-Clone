@@ -28,8 +28,8 @@ class SignInVC: UIViewController {
                 print("MARIO: User cancelled facebook authenticaton")
             }else{
                 print("MARIO: Succesfully authenticated with facebook")
-                //let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                //self.firebaseAuthenticate(credential)
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                self.firebaseAuthenticate(credential)
             }
         }
     }
