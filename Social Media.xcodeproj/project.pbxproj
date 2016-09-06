@@ -47,6 +47,7 @@
 		4A8D792B1D7E5A4400112B4E /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
 		4A8D792D1D7E5D1A00112B4E /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		4A8D792F1D7E5E8400112B4E /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
+		4A8D79311D7E78B800112B4E /* Social Media.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Social Media.entitlements"; sourceTree = "<group>"; };
 		4AB623271D7E365200E7D757 /* Social Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social Media.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB6232A1D7E365300E7D757 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AB6232C1D7E365300E7D757 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 		4AB623291D7E365200E7D757 /* Social Media */ = {
 			isa = PBXGroup;
 			children = (
+				4A8D79311D7E78B800112B4E /* Social Media.entitlements */,
 				4A8D79281D7E57C300112B4E /* Util */,
 				4A8D79231D7E3CF500112B4E /* Model */,
 				4A8D79251D7E3D0A00112B4E /* Controller */,
@@ -272,6 +274,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = K9TK5QFD27;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					4AB6233A1D7E365600E7D757 = {
 						CreatedOnToolsVersion = 8.0;
@@ -545,6 +552,7 @@
 			baseConfigurationReference = 1EFB4B8477BBE7DFB1D9DC1C /* Pods-Social Media.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Social Media/Social Media.entitlements";
 				DEVELOPMENT_TEAM = K9TK5QFD27;
 				INFOPLIST_FILE = "Social Media/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -560,6 +568,7 @@
 			baseConfigurationReference = 55330CF395C79EEE995F4311 /* Pods-Social Media.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Social Media/Social Media.entitlements";
 				DEVELOPMENT_TEAM = K9TK5QFD27;
 				INFOPLIST_FILE = "Social Media/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
