@@ -10,16 +10,22 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
 
     @IBOutlet var emailField: FancyField!
-    
     @IBOutlet var passwordField: FancyField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if let _ = KeychainWrapper.defaultKeychainWrapper().stringForKey(KEY_ID){
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
     }
 
     @IBAction func facebookButtonTapped(_ sender: AnyObject) {
@@ -43,12 +49,18 @@ class SignInVC: UIViewController {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                 if error == nil {
                     print("MARIO: Email user authenticated with firebase")
+                    if let user = user{
+                       self.completeSignIn(id: user.uid)
+                    }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                         if error != nil {
                             print("MARIO: Unable to authenticate with firebase using email")
                         }else {
                             print("MARIO: Succesfully authenticated with firebase using email")
+                            if let user = user{
+                                self.completeSignIn(id: user.uid)
+                            }
                         }
                     })
                 }
@@ -62,8 +74,17 @@ class SignInVC: UIViewController {
                 print("MARIO: Unable to authenticate with firebase: - \(error)")
             }else{
                 print("MARIO: Succesfully authenticated with firebase")
+                if let user = user{
+                   self.completeSignIn(id: user.uid)
+                }
             }
         })
+    }
+    
+    func completeSignIn(id: String){
+         let saveSuccessful: Bool = KeychainWrapper.defaultKeychainWrapper().setString(id, forKey: KEY_ID)
+        print("MARIO: KeyChain save reuslt: \(saveSuccessful)")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
     }
 
 }
