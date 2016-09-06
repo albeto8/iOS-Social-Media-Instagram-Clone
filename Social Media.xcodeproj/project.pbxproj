@@ -21,6 +21,7 @@
 		4AB6234B1D7E365700E7D757 /* Social_MediaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6234A1D7E365700E7D757 /* Social_MediaUITests.swift */; };
 		4AB623591D7E37BD00E7D757 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AB623581D7E37BD00E7D757 /* GoogleService-Info.plist */; };
 		4ABB0C141D7F2D6D0082238C /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB0C131D7F2D6C0082238C /* FeedVC.swift */; };
+		4ABB0C161D7F42560082238C /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB0C151D7F42560082238C /* CircleView.swift */; };
 		BBA1DBF482993D6AEB77963E /* Pods_Social_Media.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DB31BCD5E6FB62F1A9A419 /* Pods_Social_Media.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		4AB6234C1D7E365700E7D757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AB623581D7E37BD00E7D757 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4ABB0C131D7F2D6C0082238C /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		4ABB0C151D7F42560082238C /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		55330CF395C79EEE995F4311 /* Pods-Social Media.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Media.release.xcconfig"; path = "Pods/Target Support Files/Pods-Social Media/Pods-Social Media.release.xcconfig"; sourceTree = "<group>"; };
 		B8DB31BCD5E6FB62F1A9A419 /* Pods_Social_Media.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Media.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 				4A8D792B1D7E5A4400112B4E /* RoundBtn.swift */,
 				4A8D792D1D7E5D1A00112B4E /* FancyField.swift */,
 				4A8D792F1D7E5E8400112B4E /* FancyButton.swift */,
+				4ABB0C151D7F42560082238C /* CircleView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ABB0C161D7F42560082238C /* CircleView.swift in Sources */,
 				4A8D792E1D7E5D1A00112B4E /* FancyField.swift in Sources */,
 				4AB6232D1D7E365300E7D757 /* SignInVC.swift in Sources */,
 				4A8D792C1D7E5A4400112B4E /* RoundBtn.swift in Sources */,
@@ -481,6 +485,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -530,6 +535,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -558,6 +564,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EFB4B8477BBE7DFB1D9DC1C /* Pods-Social Media.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Social Media/Social Media.entitlements";
 				DEVELOPMENT_TEAM = K9TK5QFD27;
@@ -574,6 +581,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 55330CF395C79EEE995F4311 /* Pods-Social Media.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Social Media/Social Media.entitlements";
 				DEVELOPMENT_TEAM = K9TK5QFD27;
