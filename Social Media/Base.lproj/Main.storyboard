@@ -196,7 +196,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="384" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uun-yk-1JU">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="384" id="7rY-Nv-zO3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="384" id="7rY-Nv-zO3" customClass="PostCell" customModule="Social_Media" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="384"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7rY-Nv-zO3" id="xK7-sp-RB6">
@@ -231,6 +231,9 @@
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-qi-3s6"/>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jsn-wq-vG3">
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="5Xg-bL-v7p"/>
+                                                                    </constraints>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -252,16 +255,18 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="B5t-Hd-gbY" secondAttribute="bottom" constant="8" id="CVo-bD-Nry"/>
                                                         <constraint firstItem="B5t-Hd-gbY" firstAttribute="top" secondItem="6gh-ZS-afr" secondAttribute="bottom" constant="8" id="UBS-N0-U0g"/>
                                                         <constraint firstAttribute="trailing" secondItem="B5t-Hd-gbY" secondAttribute="trailing" constant="8" id="beg-Ph-Z9o"/>
-                                                        <constraint firstAttribute="trailing" secondItem="6gh-ZS-afr" secondAttribute="trailing" constant="-8" id="iqq-xg-UEb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6gh-ZS-afr" secondAttribute="trailing" constant="8" id="iqq-xg-UEb"/>
                                                         <constraint firstItem="6gh-ZS-afr" firstAttribute="top" secondItem="u7t-u4-T3P" secondAttribute="top" constant="8" id="oeg-sA-8Oy"/>
                                                         <constraint firstItem="6gh-ZS-afr" firstAttribute="leading" secondItem="u7t-u4-T3P" secondAttribute="leading" constant="8" id="tqo-g2-P7H"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="u7t-u4-T3P" firstAttribute="leading" secondItem="xK7-sp-RB6" secondAttribute="leading" constant="16" id="35T-2a-c23"/>
                                                 <constraint firstAttribute="trailing" secondItem="u7t-u4-T3P" secondAttribute="trailing" constant="16" id="MkD-mG-1Ki"/>
@@ -269,6 +274,14 @@
                                                 <constraint firstItem="u7t-u4-T3P" firstAttribute="top" secondItem="xK7-sp-RB6" secondAttribute="top" constant="8" id="rz7-u3-GzJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="heartImageView" destination="CHJ-Mr-NtT" id="JAf-AG-fuI"/>
+                                            <outlet property="likesLabel" destination="VLz-Dn-anK" id="4bv-3I-Qip"/>
+                                            <outlet property="postImageView" destination="ddR-qi-3s6" id="zkn-FD-zJG"/>
+                                            <outlet property="postTextView" destination="jsn-wq-vG3" id="oho-eY-NrN"/>
+                                            <outlet property="profileImageView" destination="y53-BJ-aeC" id="7pn-L4-Y43"/>
+                                            <outlet property="userNameLabel" destination="Cgp-Ml-LsZ" id="hT7-Dh-scA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -289,6 +302,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="Uun-yk-1JU" id="m49-9q-zWO"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="yKL-Vr-nZr"/>
                     </connections>
                 </viewController>
