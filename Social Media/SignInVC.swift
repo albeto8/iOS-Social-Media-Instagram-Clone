@@ -50,7 +50,8 @@ class SignInVC: UIViewController {
                 if error == nil {
                     print("MARIO: Email user authenticated with firebase")
                     if let user = user{
-                       self.completeSignIn(id: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
@@ -59,7 +60,8 @@ class SignInVC: UIViewController {
                         }else {
                             print("MARIO: Succesfully authenticated with firebase using email")
                             if let user = user{
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
                     })
@@ -75,14 +77,16 @@ class SignInVC: UIViewController {
             }else{
                 print("MARIO: Succesfully authenticated with firebase")
                 if let user = user{
-                   self.completeSignIn(id: user.uid)
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
                 }
             }
         })
     }
     
-    func completeSignIn(id: String){
+    func completeSignIn(id: String, userData: Dictionary<String, String>){
          let saveSuccessful: Bool = KeychainWrapper.defaultKeychainWrapper().setString(id, forKey: KEY_ID)
+        DataService.ds.createFirebaseDataDBUser(uid: id, userData: userData)
         print("MARIO: KeyChain save reuslt: \(saveSuccessful)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
     }

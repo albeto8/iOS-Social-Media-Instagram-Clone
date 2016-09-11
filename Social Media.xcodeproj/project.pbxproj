@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A4161871D84D0DE00DF534E /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4161861D84D0DE00DF534E /* DataService.swift */; };
 		4A8D79271D7E56EA00112B4E /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D79261D7E56EA00112B4E /* FancyView.swift */; };
 		4A8D792A1D7E57F100112B4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D79291D7E57F100112B4E /* Constants.swift */; };
 		4A8D792C1D7E5A4400112B4E /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D792B1D7E5A4400112B4E /* RoundBtn.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		1EFB4B8477BBE7DFB1D9DC1C /* Pods-Social Media.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Media.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Social Media/Pods-Social Media.debug.xcconfig"; sourceTree = "<group>"; };
+		4A4161861D84D0DE00DF534E /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		4A8D79261D7E56EA00112B4E /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		4A8D79291D7E57F100112B4E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A8D792B1D7E5A4400112B4E /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A4161851D84D09800DF534E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4A4161861D84D0DE00DF534E /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		4A8D79231D7E3CF500112B4E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +170,7 @@
 		4AB623291D7E365200E7D757 /* Social Media */ = {
 			isa = PBXGroup;
 			children = (
+				4A4161851D84D09800DF534E /* Services */,
 				4A8D79311D7E78B800112B4E /* Social Media.entitlements */,
 				4A8D79281D7E57C300112B4E /* Util */,
 				4A8D79231D7E3CF500112B4E /* Model */,
@@ -412,6 +423,7 @@
 				4AB6232D1D7E365300E7D757 /* SignInVC.swift in Sources */,
 				4A8D792C1D7E5A4400112B4E /* RoundBtn.swift in Sources */,
 				4A8D79301D7E5E8400112B4E /* FancyButton.swift in Sources */,
+				4A4161871D84D0DE00DF534E /* DataService.swift in Sources */,
 				4ABB0C141D7F2D6D0082238C /* FeedVC.swift in Sources */,
 				4AB6232B1D7E365300E7D757 /* AppDelegate.swift in Sources */,
 				4A8D79271D7E56EA00112B4E /* FancyView.swift in Sources */,
