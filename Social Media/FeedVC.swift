@@ -45,7 +45,14 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        
+        let post = posts[indexPath.row]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? PostCell{
+            cell.configureCell(post: post)
+            return cell
+        }else{
+            return PostCell()
+        }
     }
     
     @IBAction func signOutTapped(_ sender: AnyObject) {
