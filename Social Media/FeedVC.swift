@@ -10,9 +10,11 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    @IBOutlet var addImage: CircleView!
     @IBOutlet var tableView: UITableView!
+    var imagePicker: UIImagePickerController!
     
     var posts = [Post]()
     
@@ -20,6 +22,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -60,6 +66,19 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         print("MARIO: ID removed from keychain result: \(removeSuccessful)")
         try! FIRAuth.auth()?.signOut()
         performSegue(withIdentifier: "goToSignIn", sender: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            self.addImage.image = pickedImage
+        }else{
+            print("MARIO: A valid image wasn't selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addImageTapped(_ sender: AnyObject) {
+        present(imagePicker, animated: true, completion: nil)
     }
 
 }

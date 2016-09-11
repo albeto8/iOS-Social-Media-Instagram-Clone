@@ -162,12 +162,16 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xOB-9n-1gc">
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="h7o-qP-1CT" customClass="CircleView" customModule="Social_Media" customModuleProvider="target">
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="h7o-qP-1CT" customClass="CircleView" customModule="Social_Media" customModuleProvider="target">
                                                 <color key="backgroundColor" red="0.0" green="0.51372549020000002" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="Mkb-Kn-MmZ"/>
                                                     <constraint firstAttribute="width" constant="49" id="miW-Ej-RJH"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="UD9-aN-qPi" appends="YES" id="AHO-WP-ltn"/>
+                                                </connections>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TA2-4D-b8Y" customClass="FancyField" customModule="Social_Media" customModuleProvider="target">
                                                 <nil key="textColor"/>
@@ -204,7 +208,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="384"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7rY-Nv-zO3" id="xK7-sp-RB6">
-                                            <frame key="frameInset" width="375" height="383"/>
+                                            <frame key="frameInset" width="375" height="384"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u7t-u4-T3P" customClass="FancyView" customModule="Social_Media" customModuleProvider="target">
@@ -306,6 +310,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addImage" destination="h7o-qP-1CT" id="gZM-MM-JNl"/>
                         <outlet property="tableView" destination="Uun-yk-1JU" id="m49-9q-zWO"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="yKL-Vr-nZr"/>
                     </connections>
@@ -314,6 +319,11 @@
                 <tapGestureRecognizer id="cL6-Qo-2hf">
                     <connections>
                         <action selector="signOutTapped:" destination="C6N-rK-zTW" id="hPz-Ve-GqP"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="UD9-aN-qPi">
+                    <connections>
+                        <action selector="addImageTapped:" destination="C6N-rK-zTW" id="Tpc-jg-hOt"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
