@@ -113,12 +113,30 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                     print("MARIO: Unabled to upload image to firebase storage")
                 } else {
                     print("MARIO: Succesfully uploaded image to firebase storage")
-                    let downloadURL = metadata?.downloadURL()?.absoluteString
-                    
+                    if let downloadURL = metadata?.downloadURL()?.absoluteString {
+                        self.postToFirebase(imageURL: downloadURL)
+                    }
                 }
             })
         }
     }
+    
+    func postToFirebase(imageURL: String) {
+        let post: Dictionary<String, Any> =
+            ["caption": captionTextField.text!,
+            "imageUrl": imageURL,
+            "likes": 0]
+        
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        
+        captionTextField.text = ""
+        imageSelected = false
+        addImage.image = UIImage(named: "add-image")
+        
+        tableView.reloadData()
+    }
+    
     @IBAction func addImageTapped(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
     }
