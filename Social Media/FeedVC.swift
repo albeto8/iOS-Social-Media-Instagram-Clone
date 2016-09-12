@@ -33,6 +33,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         imagePicker.allowsEditing = true
         
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
+            self.posts.removeAll()
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
                     print("SNAP: \(snap)")
@@ -62,11 +63,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             
             if let image = FeedVC.imageCache.object(forKey: "") {
                 cell.configureCell(post: post, image: image)
-                return cell
             } else {
                 cell.configureCell(post: post)
-                return cell
             }
+            return cell
         }else{
             return PostCell()
         }

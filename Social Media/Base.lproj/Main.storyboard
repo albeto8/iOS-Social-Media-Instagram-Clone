@@ -232,6 +232,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-heart" translatesAutoresizingMaskIntoConstraints="NO" id="CHJ-Mr-NtT" customClass="CircleView" customModule="Social_Media" customModuleProvider="target">
+                                                                            <gestureRecognizers/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="60" id="6pf-y7-7Uf"/>
                                                                                 <constraint firstAttribute="height" constant="60" id="QE2-0K-lzM"/>

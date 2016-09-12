@@ -19,13 +19,20 @@ class PostCell: UITableViewCell {
     @IBOutlet var likesLabel: UILabel!
     
     var post: Post!
+    var likesReference: FIRDatabaseReference!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
+        tap.numberOfTapsRequired = 1
+        heartImageView.addGestureRecognizer(tap)
+        heartImageView.isUserInteractionEnabled = true
     }
     
     func configureCell(post: Post, image: UIImage? = nil){
+        likesReference = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
+
         self.post = post
         self.postTextView.text = post.caption
         self.likesLabel.text = String(post.likes)
@@ -48,6 +55,27 @@ class PostCell: UITableViewCell {
                 }
             })
         }
+        
+        likesReference.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.heartImageView.image = UIImage(named: "empty-heart")
+            }else{
+               self.heartImageView.image = UIImage(named: "filled-heart")
+            }
+        })
     }
-
+    
+    func likeTapped(sender: UITapGestureRecognizer) {
+        likesReference.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.heartImageView.image = UIImage(named: "filled-heart")
+                self.post.adjustLikes(addLike: true)
+                self.likesReference.setValue(true)
+            }else{
+                self.heartImageView.image = UIImage(named: "empty-heart")
+                self.post.adjustLikes(addLike: false)
+                self.likesReference.removeValue()
+            }
+        })
+    }
 }
