@@ -14,8 +14,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
 
     @IBOutlet var addImage: CircleView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var captionTextField: FancyField!
     
     var imagePicker: UIImagePickerController!
+    var imageSelected = false
+    
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     var posts = [Post]()
@@ -77,14 +80,45 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.addImage.image = pickedImage
+            imageSelected = true
         }else{
             print("MARIO: A valid image wasn't selected")
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func postButtonTapped(_ sender: AnyObject) {
+        
+        guard let caption = captionTextField.text, caption != "" else {
+            print("MARIO: Empty caption text")
+            return
+        }
+        
+        guard let image = addImage.image, imageSelected == true else {
+            print("MARIO: An image must be selected")
+            return
+        }
+        
+        if let imageData = UIImageJPEGRepresentation(image, 0.2) {
+            
+            let imageUid = NSUUID().uuidString
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            DataService.ds.REF_POST_IMAGES.child(imageUid).put(imageData, metadata: metadata, completion: { (metadata, error) in
+                if error != nil {
+                    print("MARIO: Unabled to upload image to firebase storage")
+                } else {
+                    print("MARIO: Succesfully uploaded image to firebase storage")
+                    let downloadURL = metadata?.downloadURL()?.absoluteString
+                    
+                }
+            })
+        }
+    }
     @IBAction func addImageTapped(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
     }
