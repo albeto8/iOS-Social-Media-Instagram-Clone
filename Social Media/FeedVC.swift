@@ -61,6 +61,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? PostCell{
             
+            
             if let image = FeedVC.imageCache.object(forKey: "") {
                 cell.configureCell(post: post, image: image)
             } else {
